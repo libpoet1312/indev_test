@@ -1,6 +1,5 @@
 from django.db import models
 
-
 from categories.models import Category
 
 EASY_STR = 'easy'
@@ -16,12 +15,11 @@ DIFFICULTY_CHOICES = (
 
 class Question(models.Model):
     question = models.TextField(max_length=1024)
-    correct_answer = models.TextField(max_length=1024)
 
-    month = models.CharField(max_length=1,
-                             choices=DIFFICULTY_CHOICES,
-                             default=0
-                             )
+    difficulty = models.CharField(max_length=1,
+                                  choices=DIFFICULTY_CHOICES,
+                                  default=0
+                                  )
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
