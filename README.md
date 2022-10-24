@@ -9,7 +9,7 @@ This web app is a django web app, that uses many of django functionalities.
 It renders a question list with ajax call to the api but uses internal template view to render a single question.
 
 ## Model Representation
-TO-DO
+![Django Models](django_models.jpg)
 
 ### Folder Structure and info
     | indev/                : Root application folder
@@ -32,7 +32,6 @@ TO-DO
 
 ### Database
 In development environment we use sqlite3 but in production we use postgres.
-
 
 ## Development
 
@@ -60,8 +59,8 @@ In development environment we use sqlite3 but in production we use postgres.
 ## Production
 
 ### Requirements
-1. Docker engine
-2. Docker-compose
+1. Docker
+2. Docker-compose (v1)
 
 ### Instructions
 1. ```shell
