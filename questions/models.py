@@ -2,14 +2,14 @@ from django.db import models
 
 from categories.models import Category
 
-EASY_STR = 'easy'
-MEDIUM_STR = 'medium'
-DIFFICULT_STR = 'difficult'
+EASY_STR = 'Easy'
+MEDIUM_STR = 'Medium'
+DIFFICULT_STR = 'Difficult'
 
 DIFFICULTY_CHOICES = (
-    (0, EASY_STR),
-    (1, MEDIUM_STR),
-    (2, DIFFICULT_STR)
+    ('0', EASY_STR),
+    ('1', MEDIUM_STR),
+    ('2', DIFFICULT_STR)
 )
 
 

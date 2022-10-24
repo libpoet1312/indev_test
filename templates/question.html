@@ -3,16 +3,16 @@
 
 {% block sidebar %}
     <a href="/questions" class=" h4 text-white m-2 text-decoration-none">Back to Questions</a>
-    <h5 href="#" class="  text-white m-2 text-decoration-none">Question #{{ id }}</h5>
+    <h5 href="#" class="  text-white m-2 text-decoration-none">Question #{{ question.id }}</h5>
 {% endblock %}
 
 {% block content %}
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">{{ title }}</h5>
+            <h5 class="card-title">{{ question }}</h5>
             <div style="display: flex;justify-content: space-between" class="w-100">
-                <div style="">{{ category }}</div>
-                <div style="">{{ difficulty }}</div>
+                <div style="">{{ question.category }}</div>
+                <div style="">{{ question.get_difficulty_display }}</div>
             </div>
             <div class="answers-wrapper text-center p-2">
                 {% for answer in answers %}
@@ -24,7 +24,7 @@
 {% endblock %}
 
 {% block javascript %}
-    <script> const question_id = "{{ id }}"</script>
+    <script> const question_id = "{{ question.id }}"</script>
     <script>
         $(document).ready(() => {
             $('.answer-btn').on('click', function () {

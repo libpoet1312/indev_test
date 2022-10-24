@@ -47,7 +47,7 @@ const init_table = () => {
 const init_filters = () => {
     $('#categories').select2({
         ajax: {
-            url: 'api/v1/categories',
+            url: '/api/v1/categories',
             processResults: function (data) {
                 console.log(data);
                 // Transforms the top-level key of the response object from 'items' to 'results'

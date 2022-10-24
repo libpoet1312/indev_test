@@ -48,10 +48,8 @@ class QuestionDetailView(TemplateView):
         context = super(QuestionDetailView, self).get_context_data(**kwargs)
         if kwargs['question_id']:
             question = Question.objects.get(id=kwargs['question_id'])
-            context['id'] = question.id
-            context['title'] = question.question
-            context['difficulty'] = question.difficulty
-            context['category'] = question.category
+            context['question'] = question
+
             answers = list(Answer.objects.filter(question_id__exact=question.id))
 
             # Random order of answers
