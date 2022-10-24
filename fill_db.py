@@ -1,11 +1,20 @@
 import os
 import sys
+from pathlib import Path
 
 import requests
-
 import django
+from environ import environ
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'indev.settings')
+env = environ.Env()
+
+BASE_DIR = Path(__file__).resolve().parent
+
+environ.Env.read_env(os.path.join(BASE_DIR, '.env.dev'))
+
+if env('DEBUG'):
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.dev')
+
 django.setup()
 
 from categories.models import Category

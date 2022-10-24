@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+    <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet"/>
+{% endblock stylesheet %}
+
+{% block content %}
+    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column" id="sidebar">
+        <ul class="nav flex-column text-white w-100 p-2">
+            <a href="#" class=" h2 text-white m-2 text-decoration-none">
+                Filters
+            </a>
+            <div class="category-wrapper flex-column" style="display:flex">
+                <label for="categories">Categories</label>
+                <select id="categories" class="w-100" name="categories[]" multiple="multiple"></select>
+            </div>
+
+            <div class="difficulty-wrapper flex-column" style="display:flex">
+                <label for="difficulty">Difficulty</label>
+                <select id="difficulty" class="w-100" name="difficulties[]" multiple="multiple">
+                    <option value="0">easy</option>
+                    <option value="1">medium</option>
+                    <option value="2">difficult</option>
+                </select>
+            </div>
+
+            <div class="search-wrapper flex-column" style="display:flex">
+                <label for="search-text">Search Question</label>
+                <input id="search-text" class="w-100" name="search"/>
+            </div>
+
+            <div class="search-wrapper flex-column" style="display:flex">
+                <label for="limit" class="form-label">limit</label>
+                <div style="display:flex;">
+                    <input type="range" value="5" min="1" max="25" class="form-range" id="limit">
+                    <input id="limit-val" style="width:100%; max-width: 23px; text-align: center" value="5" disabled/>
+                </div>
+            </div>
+        </ul>
+    </div>
+
+    <!-- Main Wrapper -->
+    <div class="p-4 my-container active-cont">
+        <!-- Top Nav -->
+        <nav class="navbar top-navbar navbar-light bg-light px-5">
+            <a class="btn border-0" id="menu-btn"><i class="bx bx-menu"></i></a>
+        </nav>
+        <!--End Top Nav -->
+        <h3 class="text-dark p-3">Questions</h3>
+
+        <table id="questions-table" class="display table table-striped" style="width:100%">
+            <thead>
+            <tr>
+                <th>Question</th>
+                <th>Difficulty</th>
+                <th>Category</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+{% endblock content %}
+
+{% block javascript %}
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+{% endblock javascript %}

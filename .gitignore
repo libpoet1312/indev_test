@@ -48,5 +48,3 @@ venv
 
 **/migrations/**
 !**/migrations
-
-static/

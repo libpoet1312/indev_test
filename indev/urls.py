@@ -19,14 +19,17 @@ from django.urls import path
 from rest_framework.routers import DefaultRouter
 from rest_framework.urlpatterns import format_suffix_patterns
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
 
 import settings.base as settings
+from categories.views import CategoryListView
 from questions.views import QuestionViewSet
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('api/questions/', QuestionListView.as_view()),
+    path('', TemplateView.as_view(template_name='crud.html')),
+    path('api/v1/categories', CategoryListView.as_view()),
 ]
 
 router = DefaultRouter()

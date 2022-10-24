@@ -1,10 +1,10 @@
-from rest_framework import generics, filters
-from rest_framework import viewsets, mixins
+from rest_framework import filters
+from rest_framework import mixins
 
-from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.viewsets import GenericViewSet
 
 from indev.paginators import CustomPagination
+from questions.filters import MyCustomFilter
 from questions.models import Question
 from questions.serializers import QuestionSerializer
 
@@ -27,7 +27,6 @@ class QuestionViewSet(
     queryset = Question.objects.all().order_by('id')
     serializer_class = QuestionSerializer
     pagination_class = CustomPagination
-    filterset_fields = ['category', 'difficulty']
 
-    filter_backends = [filters.SearchFilter, DjangoFilterBackend]
+    filter_backends = [filters.SearchFilter, MyCustomFilter]
     search_fields = ['question']
