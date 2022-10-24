@@ -16,12 +16,19 @@ Including another URLconf
 from django.contrib import admin
 
 from django.urls import path
+from rest_framework.routers import DefaultRouter
 from rest_framework.urlpatterns import format_suffix_patterns
-from questions.views import QuestionListView
+from questions.views import QuestionViewSet
+
+API_VERSION = '1'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('questions/', QuestionListView.as_view()),
+    # path('api/questions/', QuestionListView.as_view()),
 ]
 
-urlpatterns = format_suffix_patterns(urlpatterns)
+router = DefaultRouter()
+router.register('api/v1/questions', QuestionViewSet, basename='question')
+urlpatterns += router.urls
+
+# urlpatterns = format_suffix_patterns(urlpatterns)
