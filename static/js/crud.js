@@ -21,12 +21,14 @@ const init_table = () => {
             cache: false,
             dataSrc: function(data) {
                 if(data.results) {
-                    return data.results.map(item => ({
+                    return data.results.map(item => {
+                        return {
                         'id': item.id,
                         'question': item.question,
-                        'difficulty': item.difficulty === 2 ? 'difficult' : item.difficulty === 1 ? 'medium' : 'easy',
+                        'difficulty': item.difficulty === '2' ? 'difficult' : item.difficulty === '1' ? 'medium' : 'easy',
                         'category': item.category.title
-                    }));
+                    }
+                    });
                 }else{
                     return [];
                 }
@@ -49,7 +51,6 @@ const init_filters = () => {
         ajax: {
             url: '/api/v1/categories',
             processResults: function (data) {
-                console.log(data);
                 // Transforms the top-level key of the response object from 'items' to 'results'
                 return {
                     results: data.map(item => ({'id': item.id, 'text': item.title}))
@@ -102,8 +103,6 @@ const ajax = (table) => {
 
     const paramString = new URLSearchParams(params);
 
-    console.log(params);
-    console.log('/api/v1/questions/' + '?' + paramString.toString());
     table.ajax.url('/api/v1/questions/' + '?' + paramString.toString());
     table.ajax.reload();
 };
@@ -111,8 +110,7 @@ const ajax = (table) => {
 const onClickRow = (table) => {
     $('#questions-table').on('click', 'tbody tr',  function() {
         const row = table.row(this).data();
-        console.log(row);
-        window.location.replace("/questions/" + row['id']);
+        window.location.href("/questions/" + row['id']);
     });
 }
 
