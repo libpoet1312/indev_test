@@ -14,12 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-
 from django.urls import path
 from rest_framework.routers import DefaultRouter
 from rest_framework.urlpatterns import format_suffix_patterns
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
+
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 import settings.base as settings
 from categories.views import CategoryListView
@@ -44,5 +45,5 @@ urlpatterns += router.urls
 
 # hack to serve static files under docker without modifying nginx in docker
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
+urlpatterns += staticfiles_urlpatterns()
 # urlpatterns = format_suffix_patterns(urlpatterns)
