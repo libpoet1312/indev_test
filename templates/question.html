@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block sidebar %}
+    <a href="/questions" class=" h4 text-white m-2 text-decoration-none">Back to Questions</a>
+    <h5 href="#" class="  text-white m-2 text-decoration-none">Question #{{ id }}</h5>
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ title }}</h5>
+            <div style="display: flex;justify-content: space-between" class="w-100">
+                <div style="">{{ category }}</div>
+                <div style="">{{ difficulty }}</div>
+            </div>
+            <div class="answers-wrapper text-center p-2">
+                {% for answer in answers %}
+                    <button value="{{ answer.text }}" class="btn btn-primary answer-btn">{{ answer.text }}</button>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script> const question_id = "{{ id }}"</script>
+    <script>
+        $(document).ready(() => {
+            $('.answer-btn').on('click', function () {
+                const btns = $('.answer-btn').removeClass('btn-success').removeClass('btn-danger').addClass('btn-primary');
+                const element = this;
+                $.get('/api/v1/questions/' + question_id + '/' + $(this).val() + '/', function (data) {
+                    if(data && data.correct) {
+                        $(element).removeClass('btn-primary').toggleClass('btn-success');
+                    }
+                }).fail(function() {
+                    $(element).removeClass('btn-primary').addClass('btn-danger');
+                });
+            });
+        });
+    </script>
+{% endblock %}

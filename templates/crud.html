@@ -2,15 +2,11 @@
 {% load static %}
 
 {% block stylesheet %}
-    <link rel="stylesheet" href="{% static 'css/app.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
-    <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet"/>
+
 {% endblock stylesheet %}
 
-{% block content %}
-    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column" id="sidebar">
-        <ul class="nav flex-column text-white w-100 p-2">
-            <a href="#" class=" h2 text-white m-2 text-decoration-none">
+{% block sidebar %}
+    <a href="#" class=" h2 text-white m-2 text-decoration-none">
                 Filters
             </a>
             <div class="category-wrapper flex-column" style="display:flex">
@@ -39,21 +35,15 @@
                     <input id="limit-val" style="width:100%; max-width: 23px; text-align: center" value="5" disabled/>
                 </div>
             </div>
-        </ul>
-    </div>
+{% endblock %}
 
-    <!-- Main Wrapper -->
-    <div class="p-4 my-container active-cont">
-        <!-- Top Nav -->
-        <nav class="navbar top-navbar navbar-light bg-light px-5">
-            <a class="btn border-0" id="menu-btn"><i class="bx bx-menu"></i></a>
-        </nav>
-        <!--End Top Nav -->
+{% block content %}
         <h3 class="text-dark p-3">Questions</h3>
 
         <table id="questions-table" class="display table table-striped" style="width:100%">
             <thead>
             <tr>
+                <th>#</th>
                 <th>Question</th>
                 <th>Difficulty</th>
                 <th>Category</th>
@@ -61,7 +51,6 @@
             </thead>
             <tbody></tbody>
         </table>
-    </div>
 
 {% endblock content %}
 
@@ -69,5 +58,5 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-    <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/crud.js' %}"></script>
 {% endblock javascript %}

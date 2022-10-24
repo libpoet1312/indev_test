@@ -23,13 +23,19 @@ from django.views.generic import TemplateView
 
 import settings.base as settings
 from categories.views import CategoryListView
-from questions.views import QuestionViewSet
-
+from questions.views import QuestionViewSet, QuestionDetailView, checkAnswerForQuestion
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name='crud.html')),
+
+    path('questions/', TemplateView.as_view(template_name='crud.html')),
+
+    path('questions/<int:question_id>/', QuestionDetailView.as_view()),
+
+
+
     path('api/v1/categories', CategoryListView.as_view()),
+    path('api/v1/questions/<int:question_id>/<str:answer_text>/', checkAnswerForQuestion),
 ]
 
 router = DefaultRouter()
