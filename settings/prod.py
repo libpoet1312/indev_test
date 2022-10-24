@@ -1,5 +1,7 @@
 from settings.base import *
 
+STATIC_ROOT = '/app/static/'
+
 DATABASES = {
         'default':
             {

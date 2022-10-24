@@ -44,6 +44,6 @@ router.register('api/v1/questions', QuestionViewSet, basename='question')
 urlpatterns += router.urls
 
 # hack to serve static files under docker without modifying nginx in docker
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+# urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += staticfiles_urlpatterns()
 # urlpatterns = format_suffix_patterns(urlpatterns)
