@@ -69,5 +69,16 @@ In development environment we use sqlite3 but in production we use postgres.
 2. ```shell
     docker-compose up -d --build
     ```
+   
+## Testing
+
+Some unit tests (with django default unitest) have been written in order to test the api endpoints, some model functionalities and some templates
+
+Run:
+```shell
+sh run_tests.sh
+```
+
+This will print a report on the console with the coverage.
 
 
