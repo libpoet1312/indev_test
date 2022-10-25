@@ -35,7 +35,7 @@ urlpatterns = [
 
 
 
-    path('api/v1/categories', CategoryListView.as_view()),
+    path('api/v1/categories/', CategoryListView.as_view()),
     path('api/v1/questions/<int:question_id>/<str:answer_text>/', checkAnswerForQuestion),
 ]
 

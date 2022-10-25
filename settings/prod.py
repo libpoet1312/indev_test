@@ -1,4 +1,10 @@
-from settings.base import *
+import sys
+
+try:
+    from settings.base import *
+except ImportError as e:
+    sys.stdout.write('Cannot import settings.base\n')
+    sys.exit(0)
 
 STATIC_ROOT = '/app/static/'
 
