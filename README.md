@@ -81,7 +81,7 @@ In development environment we use sqlite3 but in production we use postgres.
 2. ```shell
     docker-compose up -d --build
     ```
-3. Navigate to (/questions)[http://localhost/questions/]
+3. Navigate to [/questions](http://localhost/questions/)
    
 ## Testing
 
