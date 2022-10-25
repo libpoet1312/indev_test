@@ -79,6 +79,6 @@ Run:
 sh run_tests.sh
 ```
 
-This will print a report on the console with the coverage.
+This will print a report on the console with the test coverage.
 
 
