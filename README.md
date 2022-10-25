@@ -33,6 +33,17 @@ It renders a question list with ajax call to the api but uses internal template 
 ### Database
 In development environment we use sqlite3 but in production we use postgres.
 
+## Api Endpoints
+    | - api/v1/categories/                  : A list of categories
+    | - api/v1/questions/                   : A paginated response for questions
+    | - api/v1/questions/<int:question_id>/ : A json response of a question. It does not show which is the correct answer.
+    | - api/v1/questions/<int:question_id>/<str:answer_test>    : Check for validity of the given answer for the given question
+    
+    | - /                                   : Default view
+    | - questions/                          : Main page that lists all questions
+    | - /questions/<int:question_id>        : Page that renders a Question
+ 
+
 ## Development
 
 ### Requirements
@@ -55,6 +66,7 @@ In development environment we use sqlite3 but in production we use postgres.
 5. ```shell
     python manage.py runserver
     ```
+6. Navigate to [/questions](http://localhost:8000/questions/)
 
 ## Production
 
@@ -69,6 +81,7 @@ In development environment we use sqlite3 but in production we use postgres.
 2. ```shell
     docker-compose up -d --build
     ```
+3. Navigate to (/questions)[http://localhost/questions/]
    
 ## Testing
 

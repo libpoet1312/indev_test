@@ -110,7 +110,7 @@ const ajax = (table) => {
 const onClickRow = (table) => {
     $('#questions-table').on('click', 'tbody tr',  function() {
         const row = table.row(this).data();
-        window.location.href("/questions/" + row['id']);
+        window.location.href = "/questions/" + row['id'];
     });
 }
 
